@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市联动</title>
+    <script src="./JS/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+    <h3>城市联动获取数据</h3>
+    选择省份：
+    <select name="" id="pro">
+        <option value="">请选择省份</option>
+    </select>
+    <select name="" id="city">
+        <option value="">请先选择省份</option>
+    </select>
+
+    <script>
+        var arr = [];
+        arr["广西省"] = ["南宁市","桂林市","柳州市","贺州市","梧州市"];
+        arr["广东省"] = ["广州市","深州市","柳州市","清远市","湛江市"];
+        arr["湖南省"] = ["长沙市","岳阳市","张家界"];
+
+        for(var p in arr)
+        {
+            $("<option value ='"+p+"'>"+p+"</option>").appendTo("#pro");
+        }
+        $("#pro").change(function()
+        {
+            var p = $(this).val();
+           
+            $("#city option").remove();
+            if(p != "" )
+            {
+                var citys = arr[p];
+                for(var i = 0;i < citys.length;i++)
+                {
+                    $("<option value ='"+citys[i]+"'>"+citys[i]+"</option>").appendTo("#city");
+                }
+            }
+            else
+            {
+                $('<option value="">请先选择省份</option>').appendTo("#city");
+            }
+            
+        })
+    </script>
+    
+</body>
+</html>

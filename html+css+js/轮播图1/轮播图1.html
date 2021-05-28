@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            /* 外边距 */
+            padding: 0;
+            /* 内边距 */
+        }
+        #outer{
+            width: 520px;
+            /* 宽度 */
+            height: 333px;
+            /* 高度 */
+            background-color: yellow;
+            /* 背景颜色 */
+            margin: 50px auto;
+            /* 外边距 */
+            position: relative;
+            /* 相对定位 */
+            padding: 10px 0;
+            /* 上下内边距 */
+            overflow: hidden;
+            /* 超框隐藏 */
+        }
+        #imglist{
+            list-style: none;
+            /* 去掉小黑点 */
+            position: absolute;
+            /* 绝对定位 */
+            left: 0px;
+        }
+        #imglist li{
+            float: left;
+            /* 浮动向左 */
+            margin: 0 10px;
+            /* 左右外边距 */
+            height: 333px;
+            width: 500px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+        }
+        #navDiv{
+            position: absolute;
+            bottom: 15px;
+            /* 向下移动15px */
+        }
+        #navDiv a{
+            width: 15px;
+            height: 15px;
+            float: left;
+            margin: 0 5px;
+            opacity: 0.5;
+            /* 透明度50% */
+            background-color: red;
+        }
+        #navDiv a:hover{
+            background-color: black;
+        }
+
+    </style>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script>
+        window.onload = function(){
+            var imglist = document.getElementById("imglist");
+            // 通过id获取imglist
+            var imgArr = document.getElementsByTagName("img");
+            // 获取标签img
+            imglist.style.width = 520*imgArr.length + "px";
+            var navDiv = document.getElementById("navDiv");
+            // 通过id获取navDiv
+            var outer = document.getElementById("outer");
+            // 通过id获取outer
+            navDiv.style.left = (outer.offsetWidth-navDiv.offsetWidth)/2+"px";
+            // 居中
+            var index = 0;
+            var allA = document.getElementsByTagName("a");
+            allA[index].style.backgroundColor= "black";
+            // 获取a标签
+            for(var i=0;i<allA.length;i++)
+            {
+                // 为每一个超链接都添加一个num属性
+                allA[i].num =i;
+                //为所有超链接都绑定单击响应函数
+                allA[i].onclick = function(){
+                    //获取点击超链接的索引
+                    index = this.num;
+                    //切换图片
+                    $("#imglist img").animate({
+                        left:-520*index +"px"
+                    },1000);
+                    setA();
+                }
+            }
+            function showImg(){
+                //给一个定时器
+                setInterval(function(){
+                    index++;
+                    index %=imgArr.length;
+                    $("#imglist img").animate({
+                        left:-520 *index +"px"
+                    },1000);
+                    setA();
+                },5000);
+            }
+            showImg();
+            function setA(){
+                for(var i=0;i<allA.length;i++)
+                {
+                    allA[i].style.backgroundColor="";
+                }
+                allA[index].style.backgroundColor = "black";
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <!-- 第一步开始布局 -->
+    <div id="outer">
+        <ul id="imglist">
+            <li><img src="./img/1.jpg" alt=""></li>
+            <li><img src="./img/2.jpg" alt=""></li>
+            <li><img src="./img/3.jpg" alt=""></li>
+        </ul>
+        <div id="navDiv">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </div>
+</body>
+</html>

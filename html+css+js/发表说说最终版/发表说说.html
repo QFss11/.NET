@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表说说</title>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <style>
+        .active{
+            color:#21B7FA;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="send-box">
+            <textarea name="" class="send" placeholder="请输入发表的内容"></textarea>
+            <input type="button" value="发表说说" class="btn">
+        </div>
+
+        <div id="list">
+            <!-- 单个盒子的时候 -->
+            <div class="box">
+                <p><img src="./img/0.jpg" alt=""> 帅气的小朋友 </p>
+                <p>2020-12-31 10:10</p>
+                <p>今天天气很好</p>
+                <p>
+                    华为p30 meta
+                    <span class="fr">
+                        <span class="per">点赞（<span class="num">0</span>）</span>
+                    </span>
+                </p>
+                <p>浏览次数：0</p>
+            </div>
+            <!-- 单个盒子结束 -->
+        </div>
+    </div>
+
+    <script>
+        // 初始化时，加载数据库中的已经发表的说说回来显示出来
+        $(function(){
+            $.ajax({
+                url:"http://localhost/Sendsay/back/index.php",
+                data:{
+                    "content":val,
+                    "time":time,
+                },
+                type:"post",//请求方式为post方法，它默认是get方法请求
+                success:function(data){
+                    // 从服务器拿回我们的说说列表数据，加载到列表中
+                    var da = JSON.parse(data);
+                    for(var i=0;i<da.length;i++)
+                    {
+                        var string = '<div class="box"><p><img src="./img/'+da[i]["id"]+'.jpg" alt=""> 帅气的小朋友 </p><p>'+time+'</p>'+
+                '<p>'+da[i]["content"]+'</p><p>华为p30 meta<span class="fr"><span class="per">点赞（<span class="num">0</span>）</span>'+
+                    '</span></p><p>浏览次数：0</p></div>';
+                        $(string).prependTo("#list");
+                    }
+                },
+                error:function(data){
+                    alert("请求出错！");
+                }
+            });
+        });
+
+        // 发表说说
+        $(".btn").click(function(){
+            var val = $(".send").val();
+            var time = getTimes();
+            var num = Math.floor(Math.random()*9);
+
+            if(val == "")
+            {
+                alert("请输入发表的内容！");
+                return;
+            }
+            var string = '<div class="box"><p><img src="./img/'+num+'.jpg" alt=""> 帅气的小朋友 </p><p>'+time+'</p>'+
+                '<p>'+val+'</p><p>华为p30 meta<span class="fr"><span class="per">点赞（<span class="num">0</span>）</span>'+
+                    '</span></p><p>浏览次数：0</p></div>';
+            $(string).prependTo("#list");
+            // 清空发表说说的内容
+            $(".send").val("");
+
+            //请求后端，是使用ajax页面无刷新请求保存数据
+            $.ajax({
+                url:"http://localhost/Sendsay/back/say.php",
+                data:{
+                    "content":val,
+                    "time":time,
+                },
+                type:"post",//请求方式为post方法，它默认是get方法请求
+                success:function(data){
+                    alert("发表说说成功！");
+                },
+                error:function(data){
+                    alert("请求出错！");
+                }
+            });
+        });
+
+        // 点赞功能 on绑定事件 事实更新页面的绑定元素
+        $("body").on('click','.per',function(){
+            var num = $(this).find("span").text();
+            console.log($(this).attr("class"));
+            if($(this).attr("class") == "per")
+            {
+                $(this).addClass("active");
+                num++;
+            }
+            else
+            {
+                $(this).removeClass("active");
+                num--;
+            }
+            $(this).find("span").text(num);
+        });
+        // $(".per").click(function(){
+        //     var num = $(this).find("span").text();
+        //     console.log($(this).attr("class"));
+        //     if($(this).attr("class") == "per")
+        //     {
+        //         $(this).addClass("active");
+        //         num++;
+        //     }
+        //     else
+        //     {
+        //         $(this).removeClass("active");
+        //         num--;
+        //     }
+        //     $(this).find("span").text(num);
+        // });
+
+        function getTimes()
+        {
+            var date = new Date();
+            // with()关键字方法，可以传对象引用使用
+            with(date)
+            {
+                // 年
+                var year = getFullYear();
+                // 月       0-11,1月份对应的是0，所以需要+1
+                var month = getMonth()+1;
+                // 日   getDate()获取的是一个月里面的1-31天里面的某一天   getDay() 它获取的是一周的某一天（周几）
+                var day = getDate();
+                // 时
+                var hour = check(getHours());
+                // 分 （小于10的时候，1 2 3 4 5 6 ）
+                var minutes = check(getMinutes());
+                // 秒
+                var seconds = check(getSeconds());
+            }
+
+            var time = year+"-"+month+"-"+day+" "+hour+":"+minutes+":"+seconds;
+            return time; 
+        }
+        function check(num)
+        {
+            if(num < 10)
+            {
+                num = "0"+num;
+            }
+            return num;
+        }
+    </script>
+</body>
+</html>

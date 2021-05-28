@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/resest.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script>
+        function validateCode()
+        {
+            var user=document.getElementById("user").value;
+            var pwd=document.getElementById("password2").value;
+            localStorage.setItem('user',user);
+            localStorage.setItem('pwd',pwd);
+            alert("注册账号成功！请登录");
+            location.href="淘宝网.html";
+        }
+        function login1(){
+            var user1=document.getElementById("textfield").value;
+            var pwd1=document.getElementById("password").value;
+            var user=localStorage.getItem('user');
+            var pwd=localStorage.getItem('pwd');
+            if(user != ""&&pwd != ""&&user == user1&&pwd == pwd1){
+                alert("登录成功");
+                $("#layer").hide();
+                $("#login").text(user1);
+            }else{
+                alert("登录失败");
+            }
+        }
+    </script>
+    <style>
+          #layer{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+        }
+        #login-box{
+            width: 340px;
+            height: 350px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            background: #fff;
+            margin-left: -190px;
+            margin-top: -195px;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .login-top a{
+            display:inline-block;
+            width: 80px;
+            height: 49px;
+          color: #777;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: 800;
+            text-align: center;
+            line-height: 49px;
+            cursor: pointer;
+            
+        }
+        .login-top a:hover{
+            color: #f20d0d;
+        }
+        .active{
+            color: #f20d0d !important;
+        }
+        .login-top span{
+            float: right;
+            font-size: 24px;
+            color: #777;
+            margin-top: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+       .login__input{
+           width: 280px;
+           padding: 18px;
+           height: 8px;
+           background: #F1F1F1;
+           border: none;
+           outline: none;
+           border-radius: 10px;
+           font-size: 18px;
+       }
+       .notice{
+           display: block;
+           height: 20px;
+       }
+       .login-btn,
+       .register__btn{
+           width: 320px;
+           height: 48px;
+           background: #f20d0d;
+           color: #fff;
+           border-radius: 20px;
+           margin: 10px 0;
+           border: none;
+           font-size: 18px;
+           cursor: pointer;
+       }
+       .login-container div{
+           display: none;
+       }
+       .show-box{
+           display: block !important;
+       }
+    </style>
+
+   
+</head>
+<body>
+    <header id="header">
+        <div class="middle grid">
+            <div class="header-left grid-cell-3">
+                <ul>
+                    <li><a href="">淘宝首页</a></li>
+                    <li><a href="">中国大陆</a></li>
+                    <li><a href="#" id="login">亲，请登陆</a></li>
+                </ul>
+            </div>
+            <div class="grid-cell-5"></div>
+            <div class="header-right grid-cell-3">
+                <ul>
+                    <li><a href="">我的淘宝</a></li>
+                    <li><a href="./购物车.html">我的购物车</a></li>
+                    <li><a href="">收藏夹</a></li>
+                    <li><a href="">商品分类</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="header1">
+        <div class="middle">
+            <div class="header1-left">
+                <ul>
+                    <li><a href="">淘宝首页</a></li>
+                    <li><a href="">中国大陆</a></li>
+                </ul>
+            </div>
+            <div class="header1-right">
+                <ul>
+                    <li><a href="">我的淘宝</a></li>
+                    <li><a href="">我的购物车</a></li>
+                </ul>
+            </div>
+        </div>
+           
+        </div>
+      
+   
+   
+    <div class="middle">
+        <div class="header-nav grid">
+            <div class="header-logo">
+                <img src="./img/logo.png" alt="">
+            </div>
+            <div class="grid-cell-5"></div>
+            <div class="header-search grid-cell-3">
+                <div class="seaech-box">
+                    <input type="text" name="key" id="" class="search-bar" placeholder="搜索商品">
+                    <input type="submit" value="搜索" class="search-btn">
+                </div>
+                <div class="search-nav">
+                    <ul>
+                        <li><a href="">时尚女鞋</a></li>
+                        <li><a href="" id="search-nav__f" >数码手机</a></li>
+                        <li><a href="">男士裙裤</a></li>
+                        <li><a href="">墙纸</a></li>
+                        <li><a href="">马丁靴</a></li>
+                        <li><a href="">沙发</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle">
+        <section class="content">
+            <div class="content-top">
+                <ul>
+                    <li><a href="" id="content-top__f" >主题市场 </a></li>
+                    <li><a href="">聚划算</a></li>
+                    <li><a href="">天猫</a></li>
+                    <li><a href="">天猫超市</a></li>
+                    <li><a href="">司法拍卖</a></li>
+                    <li><a href="">飞猪旅行</a></li>
+                    <li><a href="">智能生活</a></li>
+                    <li><a href="">苏宁易购</a></li>
+                </ul>
+            </div>
+            <div class="content-nav grid">
+                <div class="content-nav__item1 grid-cell-6">
+                  <a href="./EC详情.html"><img src="./img/b_1.jpg" alt=""></a>  
+                </div>
+                
+                <div class="content-nav__item2 grid-cell-2">
+                    <img src="./image/peijian6.png" alt="">
+                </div>
+            </div>
+
+
+            <div class="container">
+                <h3 class="container__title">店铺推荐</h3>
+                <div class="container-shop grid" >
+                        <dl class="container__item grid-cell-1">
+                            <a href="">
+                            <dt><img src="./img/6x.png" alt="" ></dt>
+                            <dd>
+								小米6X<br/>
+								前后2000万<br/>拍人更美
+								
+							</dd>
+                            <dd class="item__price"><br/>
+                                ￥696起
+                            </dd>
+                        </a>
+                        </dl>
+                    
+                        <dl class="container__item grid-cell-1">
+                            <a href="">
+                                <dt><img src="./img/8.png" alt="" ></dt>
+                                <dd>
+									小米8青春版<br/>
+									后置A1双摄<br/>索尼2400万像素<br/>
+								</dd>
+                                <dd class="item__price"><br/>
+                                    ￥1059起
+                                </dd>
+                            </a>
+                           
+                        </dl>
+                   
+                  
+                        <dl class="container__item grid-cell-1">
+                            <a href="">
+                            <dt><img src="./img/8se.png" alt="" ></dt>
+                            <dd>
+								小米8SE<br/>
+								全网通5.0<br/>骁龙710处理器
+							</dd>
+                            <dd class="item__price">
+                               
+                            </dd>
+                            <dd class="item__price"><br/>
+                                ￥1259起
+                            </dd>
+                        </a>
+                        </dl>
+                   
+                    
+                        <dl class="container__item grid-cell-1">
+                            <a href="">
+                            <dt><img src="./img/10.png" alt="" ></dt>
+                            <dd>
+								小米10青春版<br/>
+								后置四摄像头<br/>
+								4800万四摄<br/>
+								
+							</dd>
+                            <dd class="买一送个森马正品青少年长袖男t恤纯棉"></dd>
+                            <dd class="item__price"><br/>
+                                ￥1829
+                            </dd>
+                        </a>
+                        </dl>
+                    
+                   
+                        <dl class="container__item grid-cell-1">
+                            <a href="">
+                            <dt><img src="./img/note3.png" alt="" ></dt>
+                            <dd>
+								小米Note 3<br/>
+								1600万美颜自拍<br/>
+								2倍变焦双摄<br/>
+								
+							</dd>
+                            <dd class="买一送个森马正品青少年长袖男t恤纯棉">
+                              
+                            </dd>
+                            <dd class="item__price"><br/>
+                                ￥959
+                            </dd>
+                        </a>
+                        </dl>
+                   
+                    
+                        <dl class="container__item grid-cell-1">
+                            <a href="">
+                            <dt><img src="./img/note8.png" alt="" ></dt>
+                            <dd>红米note8<br/>
+								高通骁龙665<br/>
+								1080P(全高清D5)<br/>
+								</dd>
+                            <dd class="item__price"><br/>
+                                ￥1149
+                            </dd>
+                            
+                        </a>
+                        </dl>
+                   
+                </div>
+            </div>
+        </section>
+
+       
+    </div>
+    <footer class="footer">
+        <a href="">http://www.taobao.com by leoyi</a>
+     </footer>
+     <div class="middle-footer">
+         <ul class="grid">
+             <li class="grid-cell-1"><a href=""><img src="./img/icon_1.png" alt=""></a></li>
+             <li class="grid-cell-1"><a href=""><img src="./img/icon_2.png" alt=""></a></li>
+             <li class="grid-cell-1"><a href=""><img src="./img/icon_3.png" alt=""></a></li>
+             <li class="grid-cell-1"><a href=""><img src="./img/icon_4.png" alt=""></a></li>
+         </ul>
+     </div>
+    
+     <div id="layer">
+        <div id="login-box">
+            <div class="login-top">
+                <a href="#" class="active">登录</a>
+                <a href="#">注册</a>
+                <span id="close">X</span>  
+            </div>
+              
+            <!-- 登录框 -->
+            <div class="login-container">
+                <div id="login-bar" class="show-box">
+                    <input type="text" name="textfield" placeholder="请输入手机号码/邮箱" id="textfield" class="login__input">
+                    <span class="notice"></span>
+                    <input type="password" name="password" placeholder="请输入密码" id="password" class="login__input">
+                    <span class="show__eye">👁</span>
+                    <input type="button" value="登录" class="login-btn" onclick="login1()">
+                </div>
+                <!-- 注册框-->
+                <div id="register-bar">
+                    <input type="text" name="user" placeholder="请输入手机号码" id="user" class="login__input">
+                    <span class="notice"></span>
+					 <input type="password" name="password2" placeholder="请输入密码" id="password2" class="login__input">
+                    <span class="notice"></span>
+                    <input type="text" name="" placeholder="请输入验证码" id="pass1" class="login__input">
+                    <span class="notice"></span>
+                    <img src="./img/yzm.PNG" class="verify" alt="">
+                    <input type="button" value="注册" class="login-btn" onclick="validateCode()">
+                </div>
+            </div>
+           
+        
+        </div>
+    </div>
+     <script>
+        //文本框失去焦点，判断是否输入内容
+        $(".login__input").blur(function(){
+            //1.获取失去焦点的框中的值
+            var val = $(this).val();
+            if(val =="")
+            {
+                 $(this).next("span").text("请输入内容！");
+            }
+            else
+            {
+                $(this).next("span").text("");
+            }
+        })
+        //密码明文显示
+        $(".show__eye").click(function(){
+            var types = $("#pass").attr("type");
+            if(types == "password")
+            {
+                $("#pass").attr("type","text");
+                $(this).text("👁")
+            }
+            else
+            {
+                $("#pass").attr("type","password");
+                $(this).text("😣");
+            }
+        });
+        $("#login").click(function(){
+            $("#layer").fadeIn(1000);
+        });
+        $("#close").click(function(){
+            $("#layer").fadeOut(1000);
+        });
+      //   $("#layer").click(function(){
+      //       $("this).fadeOut(1000);
+      //   });
+      $(".login-top a").click(function(){
+          $(this).addClass("active").siblings("a").removeClass("active");
+          //获取当前点击中的标签的索引 index()
+          var index = $(this).index();
+          $(".login-container div").eq(index).addClass("show-box").siblings("div").removeClass("show-box");
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+#header{
+    height: 36px;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+    width: 100%;
+    background: #ccc;
+    overflow: hidden;
+  
+}
+.header-left ul li,
+.header-right ul li
+{
+    display: inline-block;
+
+}
+.header-left ul li a,
+.header-right ul li a
+{
+    line-height: 36px;
+    color: #6c6c6c;
+    font-size: 14px;
+    padding: 0 10px;
+}
+#header-left__f{
+    color: #F22E00;
+}
+.header-left ul li a:hover,
+.header-right ul li a:hover{
+    color:#F22E00;
+}
+.search-nav ul li{
+    display: inline-block;
+}
+.header-nav ul li a{
+    color:#6c6c6c;
+    padding: 0 0 0 15px;
+}
+.header-nav ul li a:hover{
+    color: #F22E00;
+}
+.header-nav{
+    margin-top: 24px;
+    height: 121px;
+}
+.search-nav{
+    margin-top: 10px;
+}
+.search-bar{
+    width: 476px;
+    border-radius: 20px 0 0 20px;
+    height: 36px;
+    border: 2px solid #F22E00;
+    padding: 2px;
+    float: left;
+    outline: none;
+}
+.search-btn{
+    border: none;
+    color: white;
+    width: 74px;
+    height: 43px;
+    background: orangered;
+    border-radius:  0 20px 20px 0;
+}
+.search-btn:hover{
+    background: orange;
+}
+#search-nav__f{
+     color: orangered;
+}
+.content-top{
+    height: 30px;
+  background: linear-gradient(to left, orange,rgb(235, 104, 56));
+}
+#content-top__f{
+    width: 190px;
+    background: #FF5000;
+    padding:  4px 30px;
+
+}
+.content-top ul li{
+    display: inline-block;
+}
+
+.content-top ul li a{
+    line-height: 30px;
+    color: white;
+    padding: 3px 10px;
+}
+.content-top ul li a:hover{
+    background: #FF5000;
+}
+.content-nav{
+    height: 400px;
+	overflow: hidden;
+   
+}
+.content-nav__item1{
+    margin-right: 10px;
+    box-shadow:  0 5px 10px #6c6c6c;
+   overflow: hidden;
+}
+content-nav__item1 a{
+	transition: all 6000ms linear 0ms;
+}
+dd{
+	text-align: center;
+}
+.content-nav__item1:hover img,
+.content-nav__item2:hover img
+
+{
+    transform: scale(1.1);
+    transition: all 600ms linear 0ms;
+}
+.content-nav__item2{
+    box-shadow:  0 5px 10px #6c6c6c;
+    overflow: hidden;
+}
+.content-nav__item1 img,
+.content-nav__item2 img{
+    width: 100%;
+    height: 100%;
+}
+.container{
+    margin-top: 50px;
+}
+.container__item{
+	width: 100px;
+	height: 400px;
+	overflow: hidden;
+}
+.container__item:hover a{
+   color: red;
+}
+.container__item img{
+    animation: ani-move 600ms alternate infinite ;
+	width: 100%;
+	height: 100%;
+}
+dt{
+	margin: 10px 10px;
+}
+.container__title{
+    margin: 20px 0;
+}
+
+@keyframes ani-move{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-5px);
+    }
+    100%{
+        transform: translateY(-10px);
+    }
+}
+.footer{
+    width: 100%;
+    height: 50px;
+    background:#EEE ;
+    line-height: 50px;
+    text-align: center;
+}
+.header1,
+.middle-footer
+{
+    display: none;
+}
+
+@media all and (max-width:1024px)
+{
+    .search-bar{
+        width: 400px;
+    }
+    .container__item
+    {
+        width: 100px;
+    }
+    .container__item img{
+        width: 100%;
+    }
+}
+@media all and (max-width:480px)
+{
+  #header{
+      display: none;
+  }
+  .header1{
+      display: block;
+      height: 50px;
+      width: 100%;
+  }
+  .header1-left
+  {
+      float: left;
+  }
+  .header1-right{
+      float: right;
+  }
+.header1-left ul li,
+.header1-right ul li
+{
+    display: inline-block;
+
+}
+.header-nav{
+    display: none;
+}
+.header1-left ul li a,
+.header1-right ul li a
+{
+    line-height: 50px;
+    color: #6c6c6c;
+    font-size: 14px;
+    padding-left: 5px;
+    
+}
+.content-nav__item2{
+    display: none;
+}
+.content-nav{
+    height: 200px;
+	
+}
+.content-nav__item1{
+    width: 100%;
+    margin-right: 0px;
+    height: 200px;
+}
+.content-nav__item1 img{
+    width: 100%;
+}
+.container{
+    margin: 0 auto;
+    width: 100%;
+}
+.container-shop{
+    flex-wrap: wrap;
+}
+.container__item{
+    width: 40%;
+}
+.container__item img{
+    width: 100%;
+}
+.footer{
+    margin-bottom: 90px;
+}
+.middle-footer{
+    display: block;
+}
+.middle-footer{
+    width: 100%;
+    height: 105px;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* 为了让这条导航栏一直在最上面，需要给一个层级关系 */
+    z-index: 100;
+}
+.middle-footer img{
+    width: 100%;
+    height: 100%;
+}
+}

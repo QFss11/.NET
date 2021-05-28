@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伸缩框</title>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <style>
+        li{
+            list-style: none;
+        }
+        .active{
+            color: blue;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="list">
+        <li class="active">弹幕 <span>👆</span></li>
+        <ul>
+            <li>娱乐</li>
+            <li>游戏</li>
+        </ul>
+    </div>
+    <script>
+     $(".active").click(function(){
+         $(this).toggleClass("active").next("ul").toggle(1000);
+         if($(this).attr("class")=="active")
+         {
+             $(this).find("span").text("👆");
+         }
+         else{
+            $(this).find("span").text("👇");
+         }
+     })
+    </script>
+</body>
+</html>

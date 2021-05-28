@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <div id="time"></div>
+        
+    <script>
+        //定时器
+       setInterval(function(){
+        var time = document.getElementById("time");
+         //实例化一个日期对象
+        var date = new Date();
+        with(date)
+        {
+             //当前小时
+        //var hour = date.getHours();
+        var hour =getHours();
+        
+        //获取分钟
+      
+       var minutes = checkDate(getMinutes());
+
+        
+        //获取秒数b
+      
+       var seconds=checkDate(getSeconds());
+
+       //====================年月日=================
+       var year = getFullYear();
+       //月份（0-11） 0代表1月， 11代表12月
+       var month = getMonth() + 1;
+       //日
+       var day=getDate();
+        }
+        
+        time.innerHTML ="当前时间："+year+"年" + month +"月" +day+"天"+ hour + ":"+minutes+":"+seconds; 
+       },1000);
+
+       function checkDate(time)
+       {
+           if(time < 10)
+           {
+               time = "0" + time;
+           }
+           return time;
+       }
+
+       
+
+      
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"1":{"id":0,"content":"hello\uff0cworld!","uid":3,"user":"\u5047\u9762\u8d85\u4eba","time":"2020-12-30 18:45:08","head":".\/img\/3.jpg"}}

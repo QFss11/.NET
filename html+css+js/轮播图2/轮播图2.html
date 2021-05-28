@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div id="picBox">
+      <a href=""class="show"><img src="./img/1.jpg" alt="" ></a> 
+       <a href=""><img src="./img/2.jpg" alt=""></a> 
+       <a href=""><img src="./img/3.jpg" alt=""></a>
+       <a href=""><img src="./img/4.jpg" alt=""></a>
+        <ul class="choice">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="left"><</div>
+        <div class="right">></div>
+    </div>
+    <script>
+        //当前图片的索引为0
+           var cur = 0;
+        $(".choice li").click(function(){
+            //选中当前选中的那个li的索引
+            var index = $(this).index();
+            //同步二个索引
+            cur=index;
+            //$("choice li").eq(index) 等同于$(this)
+            // $(this).addClass("active").siblings("li").removeClass("active");
+            // $("#picBox a").eq(index).fadeIn(1000).siblings("a").fadeOut(1000);
+            show(index);
+        });
+        var timer = null;
+        function showTmg(){
+           timer= setInterval(function(){
+            cur++;
+            if(cur>$("#picBox a").length - 1){
+                cur = 0;
+            }
+          show(cur);
+        },3000);
+        }
+       showTmg();
+
+       $("#picBox").mouseover(function(){
+
+           clearInterval(timer);
+       });
+       $("#picBox").mouseout(function(){
+           showTmg();
+       });
+      $(".left").click(function(){
+          cur--;
+          if(cur<0)
+          {
+              cur = $(".choice li").length - 1;
+          }
+        show(cur);
+      });
+
+      $(".right").click(function(){
+          cur++;
+          if(cur > $(".choice li").length - 1)
+          {
+              cur = 0;
+          }
+        show(cur);
+      });
+          
+        function show(cur)
+        {
+            $(".choice li").eq(cur).addClass("active").siblings("li").removeClass("active");
+            $("#picBox a").eq(cur).fadeIn(1000).siblings("a").fadeOut(1000);
+        }
+    </script>
+</body>
+</html>

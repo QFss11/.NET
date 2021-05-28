@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .middle{
+        text-align: center;
+        margin: 100px 0;
+    }
+    div{
+        font-size: 30px;
+        margin: 10px 0;
+    }
+    </style>
+</head>
+<body>
+    <div class="middle">
+
+        <span>做完首页 <div id="timer1" style="color:red"></div>  </span>
+        <span>用户登录页面  <div id="timer2" style="color:red"></div>  </span>
+        <span>用户注册页面 <div id="timer3" style="color:red"></div>   </span>
+     
+    </div> 
+  
+</body>  
+<script>
+      
+    function countDown(maxtime,fn)  
+    {     
+        var timer = setInterval(function() 
+        {  
+           if(!!maxtime)
+            {     
+                var day = Math.floor(maxtime / 86400),
+                hour = Math.floor((maxtime % 86400) / 3600),
+                minutes = Math.floor((maxtime % 3600) / 60),  
+                seconds = Math.floor(maxtime%60),    
+                msg = "距离结束"+day+"天"+hour+"时"+minutes+"分"+seconds+"秒";     
+                fn(msg);
+                --maxtime;     
+            } 
+            else
+            {     
+                clearInterval(timer);  
+                fn("时间到，结束!");    
+            }     
+        }, 1000);  
+    }
+    var willDate = (new Date(2021,3,18)).getTime();   //getTime()是获取到的是毫秒数
+    var willDate1 = (new Date(2021,4,30)).getTime();
+    var willDate2 = (new Date(2021,4,19)).getTime();         
+    var nowDate = (new Date()).getTime();       
+    var remian = (willDate - nowDate)/1000,
+    remian1 = (willDate1 - nowDate)/1000,
+    remian2 = (willDate2 - nowDate)/1000;
+
+    countDown( remian,function(msg) {  
+        document.getElementById('timer1').innerHTML = msg;  
+    });  
+    countDown(remian1,function( msg ) {  
+        document.getElementById('timer2').innerHTML = msg;  
+    });
+    countDown(remian2,function( msg ) {  
+        document.getElementById('timer3').innerHTML = msg;  
+    });    
+</script>  
+</html>
