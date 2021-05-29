@@ -1,0 +1,76 @@
+﻿@{
+    Layout = null;
+}
+<body>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    @*<script>
+
+            function checkUser() {
+                //用户名
+                if ($("#uname").val() == "") {
+                    $("#unameMsg").html("用户名不能为空");
+                    $("#uname").focus();
+                    return false;
+                }
+                else {
+                    $("unameMsg").html("");
+                }
+
+                return true;
+
+            }
+            function checkPwd() {
+                //密码
+                if ($("#pwd").val() == "") {
+                    $("#pwdMsg").html("密码不能为空");
+                    $("#pwd").focus();
+                    return false;
+                }
+                else {
+                    $("#pwdMsg").html("");
+                }
+
+                return true;
+            }
+            //2次密码进行比较
+            function checkuPwd() {
+                checkPwd();//先确定密码已经输入再比较
+                //密码1和密码2比较
+                if ($("#pwd").val() != $("#upwd").val()) {
+                    $("#upwdMsg").html("两次密码输入的不一致");
+                    return false;
+                }
+                else {
+                    $("#upwdMsg").html("");
+                }
+                return true;
+            }
+            function checkForm() {
+                if (checkUser() && checkuPwd())
+                    return true;
+                return false;
+            }
+        </script>*@
+    @*@using (Html.BeginForm("Index", "Home", "FormMethod.Post"))
+        {
+            <span>用户名：</span>@Html.TextBox("uname", "", new { onblur = "checkUser()" })
+            <span id="unameMsg" style="color:red"></span><br>
+            <span>密码：</span>@Html.TextBox("pwd", "", new { onblur = "checkPwd()" })
+            <span id="pwdMsg" style="color:red"></span><br>
+            <span>确认密码：</span>@Html.TextBox("upwd", "", new { onblur = "checkuPwd()" })
+            <span id="upwdMsg" style="color:red"></span><br>
+            <input type="submit" value="提交" />
+        }*@
+    <h1>添加商品信息</h1>
+    @using (Html.BeginForm())
+    {
+        <p>商品标题：@Html.TextBox("title")</p>
+        <p>标记价格：@Html.TextBox("marketprice")</p>
+        <p>商品数量：@Html.TextBox("cnt")</p>
+        <input type="submit" id="submit1" value="提交" />
+        @Html.ValidationSummary()
+        <p>@ViewBag.info</p>
+
+    }
+
+</body>
