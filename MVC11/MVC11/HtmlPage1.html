@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form action="/Home/PostDaTa" method="post">
+        <input type="text" name="loginname" value="" />
+        <button>
+            提交
+        </button>
+    </form>
+    <form action="/Home/FileData" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" value="" />
+        <button>
+            提交
+        </button>
+    </form>
+    <form action="/Home/SessionData" method="post">
+        <input type="text" name="user" value="" />
+        <button>
+            登录
+        </button>
+    </form>
+</body>
+</html>
